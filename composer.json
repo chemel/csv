@@ -1,0 +1,8 @@
+{
+    "name": "alc/csv",
+    "description": "PHP CSV Reader / Writer",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-0": { "Alc\\Csv": "src/" }
+    }
+}
