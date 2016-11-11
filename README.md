@@ -4,7 +4,7 @@ Install:
 ======
 
 ```bash
-composer require alc/curl:dev-master
+composer require alc/csv:dev-master
 
 ```
 
