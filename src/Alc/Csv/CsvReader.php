@@ -5,111 +5,14 @@ namespace Alc\Csv;
 /**
  * CsvReader
  */
-class CsvReader {
-
-	protected $filename;
-	protected $handle;
-	protected $index = 0;
-
-	protected $hasHeader;
-	protected $header = null;
-
-	protected $delimiter;
-	protected $enclosure;
-	protected $escape;
-
-	/**
-	 * __construct
-	 */
-	public function __construct( $filename, $delimiter = ';', $enclosure = '"', $escape = '\\', $hasHeader = true ) {
-
-		if( !function_exists('fgetcsv') )
-			throw new \Exception('CsvReader require fgetcsv extension', 1);
-
-		if( !file_exists($filename) )
-			throw new \Exception('File doesnt exist', 1);
-
-		$this->filename = $filename;
-
-		$this->setDelimiter($delimiter);
-		$this->setEnclosure($enclosure);
-		$this->setEscape($escape);
-
-		$this->hasHeader = $hasHeader;
-	}
-
-	/**
-	 * setDelimiter
-	 */
-    public function setDelimiter( $delimiter ) {
-
-    	$this->delimiter = $delimiter;
-    }
-
-	/**
-	 * setEnclosure
-	 */
-    public function setEnclosure( $enclosure ) {
-
-    	$this->enclosure = $enclosure;
-    }
-
-	/**
-	 * setEscape
-	 */
-    public function setEscape( $escape ) {
-
-    	$this->escape = $escape;
-    }
-
-	/**
-	 * hasHeader
-	 */
-	protected function hasHeader() {
-
-		return $this->hasHeader;
-	}
-
-	/**
-	 * setHeader
-	 */
-    protected function setHeader( $header ) {
-
-    	$this->header = $header;
-    }
-
-	/**
-	 * getHeader
-	 */
-	protected function getHeader() {
-
-		return $this->header;
-	}
-
-	/**
-	 * open
-	 */
-	protected function open() {
-
-		if( $this->handle == null) {
-
-			if (($this->handle = fopen($this->filename, 'r')) == false) {
-
-				$this->handle = null;
-
-				throw new \Exception('Unable to open file in read mode', 1);
-			}
-		}
-
-		return $this->handle;		
-	}
+class CsvReader extends Csv {
 
 	/**
 	 * read
 	 */
 	public function read() {
 
-		if ( $handle = $this->open() ) {
+		if ( $handle = $this->open('r') ) {
 
 			if( ($cells = fgetcsv($handle, 0, $this->delimiter, $this->enclosure, $this->escape)) !== false) {
 
@@ -183,19 +86,6 @@ class CsvReader {
 				throw new \Exception('Bad number of arguments, CSV line '.$this->index.'. '.count($header).','.count($cells), 1);
 			}
 		}
-	}
-
-	/**
-	 * close
-	 */
-	public function close() {
-
-		$this->index = 0;
-
-		if( $this->handle != null )
-			fclose( $this->handle );
-
-		$this->handle = null;
 	}
 
 	/**
