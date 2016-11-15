@@ -22,7 +22,7 @@ class CsvWriter extends Csv {
 
 		if ( $handle = $this->open('w') ) {
 
-			if( $this->index == 0 ) {
+			if( $this->hasHeader() && $this->index == 0 ) {
 
 				$this->fputcsv($handle, array_keys($fields));
 
