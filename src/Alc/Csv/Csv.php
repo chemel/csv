@@ -34,8 +34,7 @@ abstract class Csv {
 		$this->setDelimiter($delimiter);
 		$this->setEnclosure($enclosure);
 		$this->setEscape($escape);
-
-		$this->hasHeader = $hasHeader;
+		$this->setHasHeader($hasHeader);
 	}
 
 	/**
@@ -61,6 +60,14 @@ abstract class Csv {
 
     	$this->escape = $escape;
     }
+
+	/**
+	 * setHasHeader
+	 */
+	public function setHasHeader( $hasHeader ) {
+
+		return $this->hasHeader = $hasHeader;
+	}
 
 	/**
 	 * hasHeader
