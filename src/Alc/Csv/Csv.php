@@ -21,7 +21,7 @@ abstract class Csv {
 	/**
 	 * __construct
 	 */
-	public function __construct( $filename, $delimiter = ';', $enclosure = '"', $escape = '\\', $hasHeader = true ) {
+	public function __construct( $filename, $delimiter = ',', $enclosure = '"', $escape = '\\', $hasHeader = true ) {
 
 		if( !function_exists('fgetcsv') )
 			throw new \Exception('CsvReader require fgetcsv extension', 1);

@@ -10,7 +10,7 @@ class CsvWriter extends Csv {
 	/**
 	 * __construct
 	 */
-	public function __construct( $filename = 'php://output', $delimiter = ';', $enclosure = '"', $escape = '\\', $hasHeader = true ) {
+	public function __construct( $filename = 'php://output', $delimiter = ',', $enclosure = '"', $escape = '\\', $hasHeader = true ) {
 
 		parent::__construct($filename, $delimiter, $enclosure, $escape, $hasHeader);
 	}
