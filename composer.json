@@ -1,8 +1,24 @@
 {
     "name": "alc/csv",
+    "type": "library",
     "description": "PHP CSV Reader / Writer",
-    "version": "1.0.0",
+    "keywords": ["csv", "reader", "parser"],
+    "homepage": "https://github.com/chemel/csv",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexis CHEMEL",
+            "homepage": "https://github.com/chemel"
+        }
+    ],
     "autoload": {
-        "psr-0": { "Alc\\Csv": "src/" }
+        "psr-0": {
+        	"Alc\\Csv": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
     }
 }
